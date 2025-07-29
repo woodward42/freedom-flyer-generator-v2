@@ -115,7 +115,7 @@ const positions = ref(
     id: index + 1,
     name: name,
     imageKey: imageKey,
-    image: `/images/${imageKey}.jpg`,
+    image: import.meta.env.BASE_URL+`images/${imageKey}.jpg`,
   })),
 )
 
