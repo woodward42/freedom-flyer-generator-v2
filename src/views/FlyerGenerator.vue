@@ -4,7 +4,7 @@
       <v-card class="pa-6" elevation="2">
         <!-- Выбор даты -->
         <v-row class="mb-6" justify="center">
-          <v-col cols="2" md="2">
+          <v-col cols="8" md="8">
             <v-text-field
               v-model="selectedDate"
               label="Дата рабочего собрания"
@@ -115,7 +115,7 @@ const positions = ref(
     id: index + 1,
     name: name,
     imageKey: imageKey,
-    image: import.meta.env.BASE_URL+`images/${imageKey}.jpg`,
+    image: `images/${imageKey}.jpg`,
   })),
 )
 
@@ -158,7 +158,7 @@ const generateFlyer = async () => {
     await new Promise((resolve, reject) => {
       backgroundImg.onload = resolve
       backgroundImg.onerror = reject
-      backgroundImg.src = '/images/BACKGROUND.jpeg'
+      backgroundImg.src = 'images/BACKGROUND.jpg'
     })
 
     // Получаем оригинальные размеры фонового изображения
@@ -184,7 +184,7 @@ const generateFlyer = async () => {
 
     // Добавляем дату в левый верхний угол с увеличенным шрифтом
     ctx.fillStyle = '#000000'
-    ctx.font = 'bold 36px Arial'
+    ctx.font = 'bold 36px Montserrat'
     ctx.fillText(`Рабочее собрание: ${formatDate(selectedDate.value)}`, 30, 60)
 
     // Рисуем выбранные должности под фоновым изображением
@@ -236,7 +236,7 @@ const generateFlyer = async () => {
 
       // Рисуем название должности с увеличенным шрифтом
       ctx.fillStyle = '#000000'
-      ctx.font = 'bold 28px Arial'
+      ctx.font = 'bold 28px Montserrat'
       ctx.fillText(position.name, x + imageSize + 10, y + imageSize / 2 + 10)
     }
 
