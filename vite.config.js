@@ -5,21 +5,19 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [
-    vue(),
-    vueDevTools(),
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+export default defineConfig(({ command }) => {
+  return {
+    plugins: [vue(), vueDevTools()],
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+      },
     },
-  },
-  // Настройки для GitHub Pages
-  base: './',
-  build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-    sourcemap: false
+    base: command === 'serve' ? '/' : `/freedom-flyer-generator-v2/`, // '/' для dev, '/repoName/' для prod сборки
+    build: {
+      outDir: 'dist',
+      assetsDir: 'assets',
+      sourcemap: false,
+    },
   }
 })
