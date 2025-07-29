@@ -16,7 +16,7 @@ export default defineConfig({
     },
   },
   // Настройки для GitHub Pages
-  base: process.env.NODE_ENV === 'production' ? '/flyer-generator/' : '/',
+  base: './',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
